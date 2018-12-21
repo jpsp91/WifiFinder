@@ -15,7 +15,13 @@ public class LocationService {
 
 
     public LocationEntity addNewLocation (LocationEntity location) {
-        locationRepository.
+        Optional<LocationEntity> saveLocation = locationRepository.findById(location.getId());
+        saveLocation.get().setZipcode(location.getZipcode());
+        saveLocation.get().setAddressLineOne(location.getAddressLineOne());
+        saveLocation.get().setAddressLineTwo(location.getAddressLineTwo());
+        saveLocation.get().setCity(location.getCity());
+        saveLocation.get().setState(location.getState());
+        return locationRepository.save(saveLocation.get());
     }
 
 }
