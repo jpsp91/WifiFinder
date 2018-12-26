@@ -13,8 +13,8 @@ public class LocationService {
     @Autowired
     LocationRepository locationRepository;
 
-
-    public LocationEntity addNewLocation (LocationEntity location) {
+    //Saves new location into the table in DB
+    public LocationEntity addNewLocation (LocationEntity location){
         Optional<LocationEntity> saveLocation = locationRepository.findById(location.getId());
         saveLocation.get().setZipcode(location.getZipcode());
         saveLocation.get().setAddressLineOne(location.getAddressLineOne());
@@ -24,4 +24,9 @@ public class LocationService {
         return locationRepository.save(saveLocation.get());
     }
 
+    //Retrieves the existing location from the table in DB
+    public LocationEntity getLocation (LocationEntity location){
+        LocationEntity getLocation = locationRepository.findById(location.getId()).get();
+        return  locationRepository.save(getLocation);
+    }
 }
