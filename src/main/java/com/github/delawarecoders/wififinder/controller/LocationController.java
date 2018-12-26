@@ -6,10 +6,7 @@ import com.github.delawarecoders.wififinder.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -28,7 +25,12 @@ public class LocationController {
     }
 
     @GetMapping("/location")
-    public Page<LocationEntity> getLocation(Pageable pageable){
+    public Page<LocationEntity> getAllLocations(Pageable pageable){
         return locationRepository.findAll(pageable);
+    }
+
+    @GetMapping("/location/{locationId}")
+    public LocationEntity getLocationById(@PathVariable Long locationId){
+        return locationRepository.findById(locationId).get();
     }
 }
