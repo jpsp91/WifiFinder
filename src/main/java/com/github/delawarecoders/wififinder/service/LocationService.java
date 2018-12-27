@@ -16,6 +16,7 @@ public class LocationService {
     //Saves new location into the table in DB
     public LocationEntity addNewLocation (LocationEntity location){
         Optional<LocationEntity> saveLocation = locationRepository.findById(location.getId());
+        saveLocation.get().setName(location.getName());
         saveLocation.get().setZipcode(location.getZipcode());
         saveLocation.get().setAddressLineOne(location.getAddressLineOne());
         saveLocation.get().setAddressLineTwo(location.getAddressLineTwo());
