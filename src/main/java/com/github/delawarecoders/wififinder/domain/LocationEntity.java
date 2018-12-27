@@ -13,6 +13,9 @@ public class LocationEntity {
     private Long id;
 
     @Column
+    private String name;
+
+    @Column
     private String zipcode;
 
     @Column
@@ -33,7 +36,8 @@ public class LocationEntity {
 
     }
 
-    public LocationEntity(String zipcode, String addressLineOne, String addressLineTwo, String city, String state) {
+    public LocationEntity(String name, String zipcode, String addressLineOne, String addressLineTwo, String city, String state) {
+        this.name = name;
         this.zipcode = zipcode;
         this.addressLineOne = addressLineOne;
         this.addressLineTwo = addressLineTwo;
@@ -49,6 +53,14 @@ public class LocationEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getZipcode() {
